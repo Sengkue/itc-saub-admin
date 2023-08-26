@@ -36,7 +36,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 h1 {
   font-size: 20px;
 }
