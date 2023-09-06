@@ -1,21 +1,50 @@
 <template>
-  <v-row>
-    <v-col class="text-center">
-      <img src="/v.png" alt="Vuetify.js" class="mb-5" />
-      <blockquote class="blockquote">
-        &#8220;First, solve the problem. Then, write the code.&#8221;
-        <footer>
-          <small>
-            <em>&mdash;John Johnson</em>
-          </small>
-        </footer>
-      </blockquote>
-    </v-col>
-  </v-row>
+  <div>
+    <client-only placeholder="Loading...">
+      <DoughnutChart
+        :chart-data="doughChartData"
+        :chart-options="doughChartOptions"
+        :height="430"
+      />
+    </client-only>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'InspirePage',
+  name: 'ChartItem',
+  data() {
+    return {
+      doughChartData: {
+        labels: ['NuVue', 'VueJit', 'IftShi', 'KoinVi', 'MegsWear', 'Millgh'],
+        datasets: [
+          {
+            label: 'Visualization',
+            data: [72, 131, 12, 3, 4, 55],
+            backgroundColor: [
+              'rgba(20, 255, 0, 0.85)',
+              'rgba(200, 5, 0, 0.85)',
+              'rgba(10, 220, 0, 0.85)',
+              'rgba(2, 100, 0, 0.85)',
+              'rgba(20, 55, 0, 0.85)',
+              'rgba(120, 155, 0, 0.85)'
+            ],
+            borderColor: 'rgba(100, 155, 0, 1)',
+            borderWidth: 0
+          }
+        ]
+      },
+      doughChartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        offset: 8,
+        radius: 160,
+        spacing: 4,
+        hoverOffset: 32,
+        hoverBorderWidth: 1,
+        weight: 0
+      }
+    }
+  }
 }
 </script>

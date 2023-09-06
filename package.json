@@ -15,12 +15,24 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/toast": "^3.3.1",
+    "@sweetalert2/theme-bootstrap-4": "^5.0.15",
+    "chart.js": "^3.7.1",
+    "cookie-universal-nuxt": "^2.2.2",
     "core-js": "^3.25.3",
+    "dayjs": "^1.11.9",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.43",
     "nuxt": "^2.15.8",
+    "pdfmake": "^0.2.7",
+    "sweetalert2": "^11.7.27",
     "vue": "^2.7.10",
+    "vue-chartjs": "^4.0.6",
     "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.7.10",
-    "vuetify": "^2.6.10"
+    "vuetify": "^2.6.10",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
