@@ -8,7 +8,7 @@
                 elevation="2"
                 class="white--text pa-2"
                 :style="{
-                  background: 'linear-gradient(to right, #5e1b1b, #e60000)',
+                  background: 'linear-gradient(to right, #5e1b1b, #053B50)',
                   cursor: 'pointer',
                 }"
                 
@@ -17,7 +17,7 @@
                   <div
                     class="py-2 text-caption text-sm-body-2 text-md-body-1 text-lg-h6"
                   >
-                    <h3 color="#fff">ຈຳນວນໂພສຕໍ່ມື້</h3>
+                    <h3 color="#fff">ຈຳນວນໂພສ</h3>
                     <span>50 ໂພສ</span>
                   </div>
                   <div>
@@ -40,7 +40,7 @@
                 elevation="2"
                 class="white--text pa-2"
                 :style="{
-                  background: 'linear-gradient(to right, #5e1b1b, #e60000)',
+                  background: 'linear-gradient(to right, #5e1b1b, #176B87)',
                   cursor: 'pointer',
                 }"
               >
@@ -48,8 +48,8 @@
                   <div
                     class="py-2 text-caption text-sm-body-2 text-md-body-1 text-lg-h6"
                   >
-                    <h3>ຈຳນວນໂພສຕໍ່ມື້</h3>
-                    <span>50 ໂພສ</span>
+                    <h3>ຈຳນວນຄຳຕອບ</h3>
+                    <span>50 ຄຳຕອບ</span>
                   </div>
                   <div>
                     <v-icon color="white" size="50">mdi-wallet-giftcard</v-icon>
@@ -71,7 +71,7 @@
                 elevation="2"
                 class="white--text pa-2"
                 :style="{
-                  background: 'linear-gradient(to right, #5e1b1b, #e60000)',
+                  background: 'linear-gradient(to right, #5e1b1b, #64CCC5)',
                   cursor: 'pointer',
                 }"
               >
@@ -79,8 +79,8 @@
                   <div
                     class="py-2 text-caption text-sm-body-2 text-md-body-1 text-lg-h6"
                   >
-                    <h3>ຈຳນວນໂພສຕໍ່ມື້</h3>
-                    <span>50 ໂພສ</span>
+                    <h3>ຜູ້ໃຊ້</h3>
+                    <span>50 ຄົນ</span>
                   </div>
                   <div>
                     <v-icon color="white" size="50">mdi-wallet-giftcard</v-icon>
@@ -102,7 +102,7 @@
                 elevation="2"
                 class="white--text pa-2"
                 :style="{
-                  background: 'linear-gradient(to right, #5e1b1b, #e60000)',
+                  background: 'linear-gradient(to right, #5e1b1b, #EEEEEE)',
                   cursor: 'pointer',
                 }"
               >
@@ -110,7 +110,7 @@
                   <div
                     class="py-2 text-caption text-sm-body-2 text-md-body-1 text-lg-h6"
                   >
-                    <h3>ຈຳນວນໂພສຕໍ່ມື້</h3>
+                    <h3>ໂພສຜິດກົດ</h3>
                     <span>50 ໂພສ</span>
                   </div>
                   <div>

@@ -3,7 +3,7 @@
     <v-row>
       <v-col cols="12">
         <div class="text-container">
-          <p class="running-text">This text runs from right to left.</p>
+          <h2 class="moving-text">This text will move from left to right.</h2>
         </div>
       </v-col>
       <v-col cols="3">
@@ -71,21 +71,36 @@
         <v-card class="mb-2 teal white--text">
           <div class="pa-10">
             <div class="d-flex">
-              <h3 class="mr-1">ລວມເງິນທັງໝົດ:</h3>
-              <span> {{ formatPrice(totalSaleTotal) }} ກີບ</span>
+              <h3 class="mr-1">ລວມໂພສຕ໌ຄຳຖາມທັງໝົດ:</h3>
+              <span> {{ formatPrice(totalSaleTotal) }} ໂພສຕ໌</span>
             </div>
             <div class="d-flex">
-              <h3 class="mr-1">ລວມຈຳນວນທັງໝົດ:</h3>
-              <span> {{ formatPrice(totalSaleQuantity) }}</span>
+              <h3 class="mr-1">ລວມຈຳນວນຜູ້ໂພສຕ໌ຄຳຖາມທັງໝົດ:</h3>
+              <span> {{ formatPrice(0) }} ຄົນ</span>
             </div>
           </div>
         </v-card>
       </v-col>
-      <v-col cols="12" class="d-flex justify-end"
-        ><v-btn class="print-button primary" @click="generateAndPrintBill"
-          >ພິມລາຍງານ</v-btn
-        ></v-col
-      >
+      <v-col cols="12" class="d-flex justify-end">
+        <v-menu offset-y>
+          <template #activator="{ on, attrs }">
+            <v-btn color="primary" dark v-bind="attrs" v-on="on">
+              Exports
+            </v-btn>
+          </template>
+          <v-list class="py-0" justify="start">
+            <v-btn block text color="success"
+              ><v-icon left>mdi-microsoft-excel</v-icon> excel</v-btn
+            >
+            <v-btn block text color="error"
+              ><v-icon left>mdi-file-pdf-box</v-icon> pdf</v-btn
+            >
+            <v-btn block text color="primary" @click="generateAndPrintBill"
+              ><v-icon>mdi-printer</v-icon> print</v-btn
+            >
+          </v-list>
+        </v-menu>
+      </v-col>
     </v-row>
 
     <!-- :items="filteredSalesData" -->
@@ -172,12 +187,10 @@ export default {
       endDate: null,
       newSearch: null,
       newHeaders: [
-        { text: 'ລະຫັດໃບບິນ', value: 'id' },
-        { text: 'ຊື່ລູກຄ້າ', value: 'customerName' },
-        { text: 'ເບີລູກຄ້າ', value: 'customerPhone' },
-        { text: 'ຈຳນວນ', value: 'sale_quantity' },
-        { text: 'ຈຳນວນເງິນ', value: 'sale_total' },
-        { text: 'ວັນທີຊື້', value: 'sale_date' },
+        { text: 'ລຳດັບ', value: 'index' },
+        { text: 'ຊື່ຜູ້ໂພສຕ໌ຄຳຖາມ', value: 'customerName' },
+        { text: 'ເບີຜູ້ໂພສຕ໌ຄຳຖາມ', value: 'customerPhone' },
+        { text: 'ວັນທີໂພສຕ໌ຄຳຖາມ', value: 'sale_date' },
         { text: 'ລາຍລະອຽດ', value: 'actions' },
       ],
       newdetailHeader: [
@@ -221,11 +234,10 @@ export default {
         return total + item.sale_total
       }, 0)
     },
-    totalSaleQuantity() {
-      return this.salesData.reduce((total, item) => {
-        return total + item.sale_quantity
-      }, 0)
-    },
+  },
+  watch: {
+    startDate: 'fetchFilteredSalesData',
+    endDate: 'fetchFilteredSalesData',
   },
   created() {
     // Set default start date to yesterday
@@ -240,10 +252,6 @@ export default {
 
     // Fetch initial sales data using the default start and end dates
     this.fetchFilteredSalesData()
-  },
-  watch: {
-    startDate: 'fetchFilteredSalesData',
-    endDate: 'fetchFilteredSalesData',
   },
   mounted() {
     this.fetchSalesData()
@@ -347,7 +355,7 @@ export default {
 
       // Add bill date
       printWindow.document.write(
-        `<h2 style='text-align:center'>ລາຍງານການຂາຍອອນໄລ</h2>`
+        `<h2 style='text-align:center'>ລາຍງານ</h2>`
       )
       printWindow.document.write(
         `<h3 class="bill-date">ພະນັກງານ: ${this.$cookies.get('name')}</h3>`
@@ -364,10 +372,7 @@ export default {
              <p class="bill-date">ລວມເງິນທັງໝົດ: ${this.formatPrice(
                this.totalSaleTotal
              )} ກີບ</p>
-             <p class="bill-date">ຈຳນວນທັງໝົດ: ${this.formatPrice(
-               this.totalSaleQuantity
-             )}</p>
-  
+             <p class="bill-date">ຈຳນວນທັງໝົດ: ${this.formatPrice(0)}</p>
                   </div>
                     </div>
                     
@@ -401,20 +406,17 @@ export default {
   white-space: nowrap;
 }
 
-.running-text {
-  position: relative;
-  animation: runText 30s ease-in-out infinite;
-  opacity: 0;
+.moving-text {
+  animation: moveRight 10s linear infinite;
+  // Add more styling for the moving text if needed
 }
 
-@keyframes runText {
-  0%, 100% {
-    left: 100%;
-    opacity: 0;
+@keyframes moveRight {
+  0% {
+    transform: translateX(0);
   }
-  50% {
-    left: 0;
-    opacity: 1;
+  100% {
+    transform: translateX(100%);
   }
 }
 </style>
